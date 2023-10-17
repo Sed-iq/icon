@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICON</title>
+    <link rel="stylesheet" href="styles/slot.css">
+    <link rel="stylesheet" href="styles/head and foot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+   <div class="cont">
+    <header class="slot-head">
+        <h1><span>iC</span><img src="images/icon-body.png" alt=""><span>N</span></h1>
+        <p>Membership  Whitelisting Part </p>
+        <div></div>
+    </header>
+    <div class="slot-body">
+
+        <div class="left-slot">
+          <div class="up-left">
+                <h6>Hi,</h6>
+                <br>
+                <h3>Welcome</h3>
+          </div>
+          <div class="down-left">
+              <h1>ICON</h1>
+              <p><b>(FOSTRING THE SPIRIT OF COLLABORATION)</b></p>
+          </div>
+        </div>
+
+        <div class="right-slot">
+            <h4>Select your region to check avaliability</h4>
+            <div class="option">
+                <label for="country"><b>Country</b></label>
+                <div class="selectdiv">     
+                    <select name="Country" id="location" aria-placeholder="select" oninput="return validate()">
+                        <option value="select" disabled selected>-select-</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Ghana">Ghana</option>
+                    </select>
+                </div>
+            </div>
+            <h4 id="avalable">Whitelisting Slot is Available</h4>
+            <a href="generator.html" id="reservebtn" onclick="check()"><button class="slot-btn" id="slotBtn">Reserve Slot</button></a>
+        </div> 
+    </div>
+    <footer class="slot-foot">
+        <div></div>
+        <div><p>All rights Reserved 2023</p></div>
+        <div>
+            <p>Follow us</p>
+            <p> <i class="fa fa-twitter" aria-hidden="true"></i></p>
+            <p> <i class="fa fa-telegram" aria-hidden="true"></i></p>
+        </div>
+    </footer>
+   </div>
+
+   <script src="javascript/main.js"></script>
+</body>
+</html>

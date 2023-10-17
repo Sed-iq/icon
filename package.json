@@ -1,0 +1,11 @@
+{
+  "name": "icon-project",
+  "version": "1.0.0",
+  "description": "Main icon website project",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app"
+  },
+  "author": "Abdullahi Sadiq (FullStack developer)",
+  "license": "ISC"
+}

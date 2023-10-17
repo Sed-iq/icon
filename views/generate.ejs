@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICON</title>
+    <link rel="stylesheet" href="styles/generate.css">
+    <link rel="stylesheet" href="styles/head and foot.css">
+    <link rel="stylesheet" href="styles/maingen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+   <div class="cont">
+    <header class="slot-head">
+        <h1><span>iC</span><img src="images/icon-body.png" alt=""><span>N</span></h1>
+        <p>Generate Code </p>
+        <div></div>
+    </header>
+
+
+    <div class="confirm">
+        <h3 class="con-head">confirm payment to generate code.</h3>
+        <div class="ada">
+            <div class="green">
+                <div class="fill-img"><p>Fill in card details</p> <img src="images/visa.png" alt="visa" height="20px" width="20px">
+                    <img src="images/card.png" alt="mastercard" height="16px" width="30px"> <img src="images/american-express.png"
+                     alt="american-express" height="20px" width="20px"> <img src="images/paypal.png" alt="visa" height="20px" width="20px"></div>
+                <div class="abs" id="name-div">
+                    <p id="name-p">Name on card</p>
+                    <input type="text" class="card-input" id="name" required onkeyup="checkName()">
+                </div>
+                <div class="abs" id="no-div">
+                    <p id="no-p">Card number</p>
+                    <input type="tel" class="card-input" required id="no"
+                     onkeyup="checkNo()" onkeypress="restrictAlphabets(event)" maxlength="19">
+                </div>
+                <div class="last-ele">
+                    <div class="abs" id="date-div">
+                        <p id="date-p">exp date</p>
+                        <input type="tel" class="card-input" required id="date" 
+                        onkeyup="checkDate()" onkeypress="restrictAlphabets(event)" maxlength="5">
+                    </div>
+                    <div class="abs" id="cvv-div">
+                        <p id="cvv-p">cvv</p>
+                        <input type="number" class="card-input" required id="cvv" oninput="checkCvv()" >
+                    </div>
+                </div>
+                <a href="#" onclick="confirm()" id="check-form"><button class="confirm-btn" id="check-btn" disabled >confirm</button></a>
+                <br>
+                <p id="hidden" style="display: none;">fill all field</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer class="slot-foot">
+        <div></div>
+        <div><p>All rights Reserved 2023</p></div>
+        <div>
+            <p>Follow us</p>
+            <p> <i class="fa fa-twitter" aria-hidden="true"></i></p>
+            <p> <i class="fa fa-telegram" aria-hidden="true"></i></p>
+        </div>
+    </footer>
+   </div>
+  
+   <script src="javascript/generate.js"></script>  
+</body>
+</html>

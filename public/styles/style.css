@@ -1,107 +1,104 @@
-
 .bold-icon {
-    background: url(../images/bold-icon.jpg) no-repeat center/cover ;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-family: Helvetica, sans-serif;
+  background: url(public/styles/images/bold-icon.jpg) no-repeat center/cover;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: Helvetica, sans-serif;
 }
 
 .bold-icon > h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 3em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 3em;
 }
 
 .bold-icon > p {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.2em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2em;
 }
 
 .about-us {
-    background-color: #fff;
-    padding: 6%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5%;
+  background-color: #fff;
+  padding: 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5%;
 }
 
 .left-about {
-    text-align: justify;
-    grid-area: "left-about";
+  text-align: justify;
+  grid-area: "left-about";
 }
 
 .right-about {
-    background: #d9d9d9;
-    background-size: cover;
-    background-repeat: no-repeat;
-    grid-area: "right-about";
+  background: #d9d9d9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  grid-area: "right-about";
 }
 
-
 .register {
-    background-color: #0b5200;
-    height: 3em;
-    color: #fff;
-    font-size: 1.5em;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  background-color: #0b5200;
+  height: 3em;
+  color: #fff;
+  font-size: 1.5em;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .register > .fa {
-    padding: 0 2%;
+  padding: 0 2%;
 }
 
 .join {
-    background: url(../images/images.jpeg) no-repeat;
-    background-size: cover;
-    font-size: 1.5em;
-    text-align: center;
-    height: 200px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background: url(public/styles/images/images.jpeg) no-repeat;
+  background-size: cover;
+  font-size: 1.5em;
+  text-align: center;
+  height: 200px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .started {
-    background-color: #0b5200;
-    border: none;
-    border-radius: 5px;
-    width: 120px;
-    padding: 10px;
-    margin-top: 20px;
-    color: #fff;
-    transition: 0.5s ease-in-out;
+  background-color: #0b5200;
+  border: none;
+  border-radius: 5px;
+  width: 120px;
+  padding: 10px;
+  margin-top: 20px;
+  color: #fff;
+  transition: 0.5s ease-in-out;
 }
 
 .started:hover {
-    background-color: transparent;
-    color: #0b5200;
-    border: #0b5200 1px solid;
-    text-decoration: solid;
+  background-color: transparent;
+  color: #0b5200;
+  border: #0b5200 1px solid;
+  text-decoration: solid;
 }
 
-
 @media screen and (max-width: 769px) {
-    .about-us {
-        grid-template-areas: 
-        "left-about"
-        "right-about";
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr;
-    }    
+  .about-us {
+    grid-template-areas:
+      "left-about"
+      "right-about";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
 
-    .register {
-        font-size: 15px;
-    }
-    
-    .join {
-        font-size: 15px;
-    }
+  .register {
+    font-size: 15px;
+  }
+
+  .join {
+    font-size: 15px;
+  }
 }

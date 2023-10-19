@@ -32,7 +32,7 @@ function confirm(e) {
   // localStorage.randomNumber = generate(100000, 1000000);
   // console.log(nameInput.value);
   MonnifySDK.initialize({
-    amount: "1000",
+    amount: "3000",
     currency: "NGN",
     reference: "" + Math.floor(Math.random() * 1000000000 + 1),
     customerName: nameInput.value,

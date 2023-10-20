@@ -1,7 +1,8 @@
 import express from "express";
 import { pay } from "./controllers.js";
+import flash from "express-flash";
 const app = express();
-
+app.use(flash());
 app.set("view engine", "ejs");
 app.use("/public", express.static("public"));
 app.get("/", (req, res) => {
@@ -15,6 +16,7 @@ app.get("/generator", (req, res) => {
   res.render("generator");
 });
 app.get("/generate", (req, res) => {
+  res.clearCookie("foo");
   res.render("generate");
 });
 app.get("/signup", (req, res) => {

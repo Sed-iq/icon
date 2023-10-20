@@ -1,4 +1,5 @@
 import express from "express";
+import { pay } from "./controllers.js";
 const app = express();
 
 app.set("view engine", "ejs");
@@ -6,6 +7,7 @@ app.use("/public", express.static("public"));
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.post("/pay", pay);
 app.get("/slot", (req, res) => {
   res.render("slot");
 });

@@ -21,10 +21,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script
-      type="text/javascript"
-      src="https://sdk.monnify.com/plugin/monnify.js"
-    ></script>
   </head>
   <body>
     <div class="cont">
@@ -37,52 +33,36 @@
         <div></div>
       </header>
 
-      <div class="confirm">
+      <form method="post" action="/pay" id="form" class="confirm">
         <h3 class="con-head">confirm payment to generate code.</h3>
         <div class="ada">
           <div class="green">
-            <div class="fill-img">
-              <p>Fill in card details</p>
-              <img
-                src="public/styles/images/visa.png"
-                alt="visa"
-                height="20px"
-                width="20px"
-              />
-              <img
-                src="public/styles/images/card.png"
-                alt="mastercard"
-                height="16px"
-                width="30px"
-              />
-              <img
-                src="public/styles/images/american-express.png"
-                alt="american-express"
-                height="20px"
-                width="20px"
-              />
-              <img
-                src="public/styles/images/paypal.png"
-                alt="visa"
-                height="20px"
-                width="20px"
-              />
+            <div id="pay_modal_heading">
+              <p>Fill in Details</p>
             </div>
             <div class="abs" id="name-div">
-              <p id="name-p">Name on card</p>
+              <p id="name-p">Name</p>
               <input
+                pattern=".*\S+.*"
+                name="name"
                 type="text"
                 class="card-input"
                 id="name"
                 required
-                onkeyup="checkName()"
               />
             </div>
             <div class="abs" id="name-div">
               <p>Email</p>
-              <input type="email" class="card-input" id="email" required />
+              <input
+                name="email"
+                type="email"
+                class="card-input"
+                id="email"
+                required
+              />
             </div>
-            <div class="abs" id="no-div">
+            <!-- onkeyup="checkName()" -->
+            <!-- <div class="abs" id="no-div">
               <p id="no-p">Card number</p>
               <input
                 type="tel"
@@ -93,8 +73,8 @@
                 onkeypress="restrictAlphabets(event)"
                 maxlength="19"
               />
-            </div>
-            <div class="last-ele">
+            </div> -->
+            <!-- <div class="last-ele">
               <div class="abs" id="date-div">
                 <p id="date-p">exp date</p>
                 <input
@@ -117,20 +97,13 @@
                   oninput="checkCvv()"
                 />
               </div>
-            </div>
-            <button
-              onclick="confirm()"
-              class="confirm-btn"
-              id="check-btn"
-              disabled
-            >
-              confirm
-            </button>
+            </div> -->
+            <button class="confirm-btn" id="check-btn">pay (3000)</button>
             <br />
             <p id="hidden" style="display: none">fill all field</p>
           </div>
         </div>
-      </div>
+      </form>
 
       <footer class="slot-foot">
         <div></div>

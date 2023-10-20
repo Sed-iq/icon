@@ -1,252 +1,264 @@
 .cont {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+#pay_modal_heading {
+  display: flex;
+  justify-content: center;
+}
+#go {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .confirm {
-    height: 87vh;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 87vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .confirm > * {
-    margin: 1% 20%;
+  margin: 1% 20%;
 }
 
 .con-head {
-    color: #0b5200;
-    text-transform: uppercase;
-    font-size: 2em;
+  color: #0b5200;
+  text-transform: uppercase;
+  font-size: 2em;
 }
 
 .ada {
-    background-color: #0b5200;
-    width: 500px;
-    height: 65vh;
-    padding: 10px 50px;
-    border-radius: 5px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  background-color: #0b5200;
+  width: 500px;
+  height: 65vh;
+  padding: 10px 50px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .green {
-    background-color: #fff;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    width: 100%;
-    position: absolute;
-    height: 55vh;
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
+  background-color: #fff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 100%;
+  position: absolute;
+  height: 55vh;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
 }
 
 .green > div {
-    margin: 10px 0 10px 20px;
+  margin: 10px 0 10px 20px;
 }
 
 .green > div:nth-child(1) {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    text-transform: none;
-    color: #0b5200;
-    font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  text-transform: none;
+  color: #0b5200;
+  font-weight: bold;
 }
 
 .green .abs {
-    border: 1px solid #000;
-    background-color: transparent;
-    border-radius: 5px;
-    height: 50px;
-    position: relative;
-    width: 100%;
+  border: 1px solid #000;
+  background-color: transparent;
+  border-radius: 5px;
+  height: 50px;
+  position: relative;
+  width: 100%;
 }
 
-.green  .abs p {
-    position: absolute;
-    top: -10px;
-    left: 0;
-    margin: 0 0 15px 5px;
-    padding: 0 5px;
-    background-color: #fff;
-    font-size: 13px;
+.green .abs p {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  margin: 0 0 15px 5px;
+  padding: 0 5px;
+  background-color: #fff;
+  font-size: 13px;
 }
 
 .card-input {
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding: 5px;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 5px;
 }
 
-
 .green > .last-ele {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .green > .last-ele > .abs {
-    width: 48%;
-
+  width: 48%;
 }
 
 .green > a {
-    width: 100%;
+  width: 100%;
 }
 
-.confirm-btn, .copy-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #0b5200;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    transition: 0.5s ease-in-out;
+.confirm-btn,
+.copy-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #0b5200;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: 0.5s ease-in-out;
 }
 
 .confirm-btn:disabled {
-    background-color: #33522e;
+  background-color: #33522e;
 }
 
 .confirm-btn:disabled:hover {
-    background-color: #33522e;
-    color: #fff;
+  background-color: #33522e;
+  color: #fff;
 }
 
-.confirm-btn:hover, .copy-btn:hover {
-    background-color: transparent;
-    color: #0b5200;
-    border: 1px solid #0b5200;
+.confirm-btn:hover,
+.copy-btn:hover {
+  background-color: transparent;
+  color: #0b5200;
+  border: 1px solid #0b5200;
 }
 .succ {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.success, .copy {
-    background-color: #f5f5f5;
-    color: #0b5200;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    width: 500px;
-    height: 55vh;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
+.success,
+.copy {
+  background-color: #f5f5f5;
+  color: #0b5200;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 500px;
+  height: 55vh;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
 }
 
 .copy > a {
-    width: 100%;
+  width: 100%;
 }
 
 .code {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: 0.5px solid #000;
-    border-radius: 5px;
-    color: #0b5200;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s ease-in-out;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 0.5px solid #000;
+  border-radius: 5px;
+  color: #0b5200;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s ease-in-out;
 }
 
 .copied {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 30px;
-    background-color: #0b5200;
-    color: #fff;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 30px;
+  background-color: #0b5200;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .continue > span {
-    color: #000;
-    text-align: center;
+  color: #000;
+  text-align: center;
 }
 
 .continue > a {
-    color: #0b5200;
-    text-decoration: none;
-    text-align: center;
+  color: #0b5200;
+  text-decoration: none;
+  text-align: center;
 }
 
 .generator {
-    background-color: #000;
-    height: 100vh;
+  background-color: #000;
+  height: 100vh;
+  width: 100%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-gen {
+  background-color: #000;
+}
+
+.coge-gen {
+  background-color: #fff;
+}
+
+@media screen and (max-width: 769px) {
+  .cent {
     width: 100%;
-    border: 1px solid #fff;
-    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .green {
+    width: 100%;
+    position: relative;
+    height: 55vh;
+    padding: 10px 30px 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+    text-transform: uppercase;
+  }
 
-.c-gen {
-    background-color: #000;
-}
+  .con-head {
+    color: #0b5200;
+    text-transform: uppercase;
+    font-size: 1em;
+  }
 
-.coge-gen {
-    background-color: #fff;
-}
-
-@media screen and (max-width: 769px) {
-    .cent {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .green {
-        width: 100%;
-        position: relative;
-        height: 55vh;
-        padding: 10px 30px 10px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-transform: uppercase;
-    }
-
-    .con-head {
-        color: #0b5200;
-        text-transform: uppercase;
-        font-size: 1em;
-    }
-
-    .ada, .copy, .succ, .copy > a {
-        width: 100%;
-    }
-
+  .ada,
+  .copy,
+  .succ,
+  .copy > a {
+    width: 100%;
+  }
 }

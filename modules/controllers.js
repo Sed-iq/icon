@@ -86,7 +86,7 @@ function encode(id, secret) {
   let buffer = Buffer.from(`${id}:${secret}`);
   return buffer.toString("base64");
 }
-function sendEmail(message, subject, email) {
+function sendEmail(message, subject, link, email) {
   const mailData = {
     from: "ICON " + "<icon1notification@gmail.com>",
     to: email,
@@ -97,7 +97,8 @@ function sendEmail(message, subject, email) {
   <p style="margin-bottom: 1em">
    ${message}<br />
   </p>
-  <small>Copyright© ICON </small>
+  <a href="${link}">Click to verify</a> <br/>
+  <small>Copyright© ICON ${new Date().getFullYear()} </small>
  </div>
     `,
   };
@@ -145,12 +146,33 @@ export async function createUser(req, res) {
                 gender,
               };
               const token = jwt.sign(
-                JSON.stringify(userCredentials),
+                { data: userCredentials },
                 process.env.SECRET,
                 {
                   expiresIn: "600s",
                 }
               ); // Expires in 10 minutes
+              const message = `
+              Thank you for signing up to Icon ${firstname},
+              There's one more step for you to compelete,
+              Here is your whitelist code: <b>${whitelist}</b>
+              Please do not share this with anybody as it can be used to log into your account.
+              Verify by clicking on the link below. (Expires in 10 minutes)
+              `; // Message to be sent to user
+              sendEmail(
+                message,
+                "Email Verification",
+                `http://localhost:5000/verify/${token}`,
+                email
+              )
+                .then(() => {
+                  res.render("authnotification");
+                })
+                .catch((err) => {
+                  console.log(err);
+                  req.flash("error", "Error sending email, try again");
+                  // res.redirect("/signup");
+                });
             } else {
               req.flash("error", "Email is not associated with Whitelist code");
               res.redirect("/signup");

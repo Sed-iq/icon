@@ -181,7 +181,6 @@
     inputs.forEach((input) => {
       input.addEventListener("focusout", (e) => {
         // console.log("hey");
-        console.log(terms.checked);
         input.value = e.target.value.trim(""); // Removes spaces
       });
     });

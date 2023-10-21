@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const schemas = {
   user: new mongoose.Schema(
     {
-      name: {
+      firstname: {
         type: String,
         required: true,
       },
@@ -11,13 +11,27 @@ const schemas = {
         type: String,
         required: true,
       },
-      couponCode: {
+      phonenumber: {
         type: String,
         required: true,
       },
-      password: {
+      lastname: {
         type: String,
         required: true,
+      },
+      DOB: {
+        type: String,
+        required: true,
+      },
+      address: {
+        type: String,
+      },
+      whitelist: {
+        type: String,
+        required: true,
+      },
+      authCode: {
+        type: String,
       },
     },
     { timestamps: true }
@@ -35,11 +49,16 @@ const schemas = {
       },
       productCode: {
         type: String,
-        required: true,
       },
+      paid: {
+        type: Boolean,
+        default: false,
+      },
+      signed: { type: Boolean, default: false }, // To check if user has signed up
     },
     { timestamps: true }
   ),
 };
 const User = mongoose.model("user", schemas.user);
-export { User };
+const Transaction = mongoose.model("transaction", schemas.transaction);
+export { User, Transaction };

@@ -27,3 +27,11 @@ mongoose
     console.error(err);
     process.exit(1);
   });
+
+// sendEmail("Welcome to Icon", "Greetings", "sediqabdullahi01@gmail.com")
+//   .then((data) => {
+//     console.log("Email sent!");
+//   })
+//   .catch((err) => {
+//     throw err;
+//   });

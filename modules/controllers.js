@@ -1,5 +1,9 @@
 import request from "request-promise";
 import transporter from "./transporter.js";
+import { Transaction } from "./schema.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 export function pay(req, res) {
   const { name, email } = req.body;
   const id = process.env.API_KEY;
@@ -37,13 +41,24 @@ export function pay(req, res) {
             body: JSON.stringify(transactionData),
           }
         )
-        .then((response) => {
+        .then(async (response) => {
           const data = JSON.parse(response).responseBody;
           const url = data.checkoutUrl;
           const paymentReference = data.paymentReference;
           if (url) {
-            // Prepare to save
-            res.redirect(url);
+            // Save into transaction record (coupon not generated here)
+            try {
+              const transaction = new Transaction({
+                email: email,
+                ref: paymentReference,
+                paid: false,
+              });
+              await transaction.save(); // Saves to transaction table
+              res.redirect(url); // Goes to monnify payment page
+            } catch (err) {
+              console.log(err);
+              res.redirect("/generate");
+            }
           } else res.redirect("/generate");
         })
         .catch((err) => {
@@ -55,7 +70,7 @@ export function pay(req, res) {
     });
   // console.log(encode(id, secret));
 }
-function randomGen(range) {
+export function randomGen(range) {
   let strNum = "";
   let arrNum = [];
   for (let i = 0; i < range; i++) {
@@ -86,11 +101,77 @@ function sendEmail(message, subject, email) {
  </div>
     `,
   };
+
   return new Promise((resolve, reject) => {
-    transporter.sendMail(mailData, (err, infomation) => {
-      if (err) {
+    transporter
+      .verify()
+      .then(() => {
+        transporter.sendMail(mailData, (err, infomation) => {
+          if (err) {
+            reject(err);
+          } else resolve(infomation);
+        });
+      })
+      .catch((err) => {
         reject(err);
-      } else resolve(infomation);
-    });
+      });
   });
+}
+export function SignUp(req, res) {
+  res.render("signup", {
+    error: req.flash("error"),
+    whitelist: req.ref,
+    success: req.success,
+  });
+}
+export async function createUser(req, res) {
+  const { whitelist, firstname, email, dob, gender } = req.body;
+  if (!whitelist || !firstname || !email || !dob || !gender) {
+    req.flash("error", "Fill in all the fields");
+    res.redirect("/signup");
+  } else {
+    try {
+      Transaction.findOne({ productCode: whitelist })
+        .then(async (data) => {
+          if (data) {
+            if (data.email === email) {
+              // Credentials in order
+              // Hashes all data into a token
+              const userCredentials = {
+                whitelist,
+                firstname,
+                email,
+                dob,
+                gender,
+              };
+              const token = jwt.sign(
+                JSON.stringify(userCredentials),
+                process.env.SECRET,
+                {
+                  expiresIn: "600s",
+                }
+              ); // Expires in 10 minutes
+            } else {
+              req.flash("error", "Email is not associated with Whitelist code");
+              res.redirect("/signup");
+            }
+          } else {
+            req.flash("error", "Whitelist Code is wrong, try again");
+            res.redirect("/signup");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          req.flash("error", "There seems to be an error");
+          res.redirect("/signup");
+        });
+    } catch (error) {
+      console.log(error);
+      req.flash("error", "There seems to be an error");
+      res.redirect("/signup");
+    }
+  }
+}
+export function tokenVerify(req, res) {
+  console.log(req.params.token);
 }

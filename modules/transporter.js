@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -9,5 +11,4 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   secure: true,
 });
-
 export default transporter;

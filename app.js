@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import router from "./modules/router.js";
 import mongoose from "mongoose";
 import session from "express-session";
-import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url);
@@ -18,7 +17,6 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(cookieParser(process.env.SECRET));
 app.set("views", join(__dirname + "/views"));
 app.set("view engine", "ejs");
 app.use("/public", express.static(join(__dirname + "/public")));

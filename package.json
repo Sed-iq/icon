@@ -6,16 +6,15 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app",
-    "start" :"node app"
+    "start": "node app"
   },
-    "engines": {
-      "node": ">=16.0.0"
-    },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "author": "Abdullahi Sadiq (FullStack developer)",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
@@ -23,7 +22,6 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.2",
-    "nodemailer": "^6.9.6",
-    "request-promise": "^4.2.6"
+    "nodemailer": "^6.9.6"
   }
 }

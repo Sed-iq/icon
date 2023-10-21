@@ -1,6 +1,6 @@
 import request from "request-promise";
 import transporter from "./transporter.js";
-import { Transaction } from "./schema.js";
+import { Transaction, User } from "./schema.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
@@ -126,67 +126,87 @@ export function SignUp(req, res) {
   });
 }
 export async function createUser(req, res) {
-  const { whitelist, firstname, email, dob, gender } = req.body;
-  if (!whitelist || !firstname || !email || !dob || !gender) {
+  const { whitelist, firstname, email, dob, gender, phone, lastname } =
+    req.body;
+  if (
+    (!whitelist || !firstname, !lastname || !email || !dob || !gender || !phone)
+  ) {
     req.flash("error", "Fill in all the fields");
     res.redirect("/signup");
   } else {
     try {
-      Transaction.findOne({ productCode: whitelist })
-        .then(async (data) => {
-          if (data) {
-            if (data.email === email) {
-              // Credentials in order
-              // Hashes all data into a token
-              const userCredentials = {
-                whitelist,
-                firstname,
-                email,
-                dob,
-                gender,
-              };
-              const token = jwt.sign(
-                { data: userCredentials },
-                process.env.SECRET,
-                {
-                  expiresIn: "600s",
-                }
-              ); // Expires in 10 minutes
-              const message = `
-              Thank you for signing up to Icon ${firstname},
-              There's one more step for you to compelete,
-              Here is your whitelist code: <b>${whitelist}</b>
-              Please do not share this with anybody as it can be used to log into your account.
-              Verify by clicking on the link below. (Expires in 10 minutes)
-              `; // Message to be sent to user
-              sendEmail(
-                message,
-                "Email Verification",
-                `http://localhost:5000/verify/${token}`,
-                email
-              )
-                .then(() => {
-                  res.render("authnotification");
-                })
-                .catch((err) => {
-                  console.log(err);
-                  req.flash("error", "Error sending email, try again");
-                  // res.redirect("/signup");
-                });
-            } else {
-              req.flash("error", "Email is not associated with Whitelist code");
-              res.redirect("/signup");
-            }
-          } else {
-            req.flash("error", "Whitelist Code is wrong, try again");
-            res.redirect("/signup");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          req.flash("error", "There seems to be an error");
+      User.findOne({ email }).then((data) => {
+        if (data) {
+          // Email already exsit
+          req.flash("error", "Email is associated with another account");
           res.redirect("/signup");
-        });
+        } else {
+          Transaction.findOne({ productCode: whitelist })
+            .then(async (data) => {
+              if (data) {
+                if (data.email === email) {
+                  // Credentials in order
+                  // Hashes all data into a token
+                  const userCredentials = {
+                    whitelist,
+                    firstname,
+                    lastname,
+                    email,
+                    dob,
+                    gender,
+                    phone,
+                  };
+                  const token = jwt.sign(
+                    { data: userCredentials },
+                    process.env.SECRET,
+                    {
+                      expiresIn: "600s", // change
+                    }
+                  ); // Expires in 10 minutes
+                  const message = `
+                Thank you for signing up to Icon ${firstname},
+                There's one more step for you to compelete,
+                Here is your whitelist code: <b>${whitelist}</b>
+                Please do not share this with anybody as it can be used to log into your account.
+                Verify by clicking on the link below. (Expires in 10 minutes)
+                `; // Message to be sent to user
+                  sendEmail(
+                    message,
+                    "Email Verification",
+                    `http://localhost:5000/verify/${token}`,
+                    email
+                  )
+                    .then(() => {
+                      console.log("email sent");
+                      res.render("authnotification");
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                      req.flash("error", "Error sending email, try again");
+                      res.redirect("/signup");
+                    });
+                } else {
+                  req.flash(
+                    "error",
+                    "Email is not associated with Whitelist code"
+                  );
+                  res.redirect("/signup");
+                }
+              } else {
+                req.flash(
+                  "error",
+                  "Whitelist Code is wrong, proceed to buy before signing in"
+                );
+                res.redirect("/generate");
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              req.flash("error", "There seems to be an error");
+              res.redirect("/signup");
+            });
+        }
+      });
     } catch (error) {
       console.log(error);
       req.flash("error", "There seems to be an error");
@@ -195,5 +215,46 @@ export async function createUser(req, res) {
   }
 }
 export function tokenVerify(req, res) {
-  console.log(req.params.token);
+  try {
+    const { token } = req.params;
+    jwt.verify(token, process.env.SECRET, async (err, decoded) => {
+      if (err) {
+        console.log(err);
+        req.flash("error", "Link is expired");
+        res.redirect("/signup");
+      } else if (decoded) {
+        const { data } = decoded;
+        const user = new User({
+          firstname: data.firstname,
+          lastname: data.lastname,
+          DOB: data.dob,
+          gender: data.gender,
+          email: data.email,
+          whitelist: data.whitelist,
+          phonenumber: data.phone,
+        });
+        const $user = await User.findOne({ email: data.email });
+        if ($user) {
+          // User exsits
+          res.send("Link expired");
+        } else {
+          user
+            .save()
+            .then(() => res.send("Details Saved, Welcome to ICON"))
+            .catch((err) => {
+              console.log(err);
+              req.flash("error", "There seems to be an error");
+              res.redirect("/signup");
+            });
+        }
+      } else {
+        req.flash("error", "There seems to be an error");
+        res.redirect("/signup");
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    req.flash("error", "There seems to be an error");
+    res.redirect("/signup");
+  }
 }

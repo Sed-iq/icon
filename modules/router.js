@@ -6,8 +6,7 @@ import { signup } from "./auth.js";
 dotenv.config();
 const app = express();
 app.use(flash(process.env.SECRET));
-app.set("view engine", "ejs");
-app.use("/public", express.static("public"));
+
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -19,7 +18,7 @@ app.get("/generator", (req, res) => {
   res.render("generator");
 });
 app.get("/generate", (req, res) => {
-  res.render("generate");
+  res.render("generate", { error: req.flash("error") });
 });
 app.get("/verify/:token", tokenVerify);
 app.get("/signup", signup, SignUp);

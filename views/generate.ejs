@@ -17,13 +17,18 @@
       href="path/to/font-awesome/css/font-awesome.min.css"
     />
     <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="public/styles/tailwind.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
-  <body>
-    <div class="cont">
+  <body class="h-screen w-full overflow-hidden">
+    <div class="cont relative">
       <header class="slot-head">
         <h1>
           <span>iC</span
@@ -32,6 +37,15 @@
         <p>Generate Code</p>
         <div></div>
       </header>
+
+      <% if(error.length > 0) { %>
+      <div
+        id="error"
+        class="absolute top-[6em] p-3 right-0 m-4 animate__animated animate__bounceInRight text-sm bg-red-500 text-white rounded"
+      >
+        <p><%=error%></p>
+      </div>
+      <% } %>
 
       <form method="post" action="/pay" id="form" class="confirm">
         <h3 class="con-head">confirm payment to generate code.</h3>

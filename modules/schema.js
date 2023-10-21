@@ -11,6 +11,10 @@ const schemas = {
         type: String,
         required: true,
       },
+      gender: {
+        type: String,
+        required: true,
+      },
       phonenumber: {
         type: String,
         required: true,
@@ -29,9 +33,6 @@ const schemas = {
       whitelist: {
         type: String,
         required: true,
-      },
-      authCode: {
-        type: String,
       },
     },
     { timestamps: true }

@@ -4,6 +4,10 @@ import router from "./modules/router.js";
 import mongoose from "mongoose";
 import session from "express-session";
 import cookieParser from "cookie-parser";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 dotenv.config();
 const app = express();
 app.use(
@@ -15,6 +19,9 @@ app.use(
   })
 );
 app.use(cookieParser(process.env.SECRET));
+app.set("views", join(__dirname + "/views"));
+app.set("view engine", "ejs");
+app.use("/public", express.static(join(__dirname + "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: true }));
 app.use(router);
@@ -27,11 +34,3 @@ mongoose
     console.error(err);
     process.exit(1);
   });
-
-// sendEmail("Welcome to Icon", "Greetings", "sediqabdullahi01@gmail.com")
-//   .then((data) => {
-//     console.log("Email sent!");
-//   })
-//   .catch((err) => {
-//     throw err;
-//   });

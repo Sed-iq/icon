@@ -8,9 +8,9 @@
     "dev": "nodemon app",
     "start" :"node app"
   },
-  "engines": {
-    "node": "18.x"
-  },
+    "engines": {
+      "node": ">=16.0.0"
+    },
   "author": "Abdullahi Sadiq (FullStack developer)",
   "license": "ISC",
   "dependencies": {

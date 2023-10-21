@@ -16,7 +16,7 @@ export function pay(req, res) {
     paymentDescription: "Coupon Generation",
     currencyCode: "NGN",
     contractCode: process.env.CONTRACT,
-    redirectUrl: "http://localhost:5000/signup",
+    redirectUrl: "https://icon-zeta.vercel.app/signup",
     paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
   };
   request
@@ -173,7 +173,7 @@ export async function createUser(req, res) {
                   sendEmail(
                     message,
                     "Email Verification",
-                    `http://localhost:5000/verify/${token}`,
+                    `https://icon-zeta.vercel.app/verify/${token}`,
                     email
                   )
                     .then(() => {
